@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
 import FoodDetails from './FoodDetails';
+import FoodsForm from './FoodsForm';
 
 const FoodMap = ({}) => {
 
@@ -24,6 +25,12 @@ const FoodMap = ({}) => {
             <FoodDetails key={cart.id} cart={cartes} >
             {" "}
             </FoodDetails>
+
+            
+
+            <FoodsForm key={cart.id} cart={cartes}>
+            {" "}
+            </FoodsForm>
 
             {/* <CarDetails >
         {" "}

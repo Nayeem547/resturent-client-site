@@ -23,8 +23,8 @@ const StickyNavbar = () => {
     <img className=' h-16 ' src={logo} alt="" />
   </div>
   <div className="navbar-center  lg:flex">
-    <ul className=" text-white flex justify-center gap-6 hover:text-red-600 px-1">
-      <li>
+    <ul className=" text-white flex justify-center gap-6  px-1">
+      <li className=' hover:text-red-600 ' >
        <NavLink
                  to="/"
                  className={({ isActive, isPending }) =>
@@ -40,7 +40,7 @@ const StickyNavbar = () => {
 
       </li>
      
-      <li>
+      <li className=' hover:text-red-600 ' >
       <NavLink
               to="/allfood"
               className={({ isActive, isPending }) =>
