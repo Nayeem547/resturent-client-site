@@ -31,7 +31,7 @@ const FoodDetails = ({cart}) => {
              <p className=' font-semibold  ' > Price: <span className=' text-red-600 '>{Price}</span></p>
 
              <div className=' mt-10 '>
-             <button   className=' py-2 px-4 bg-red-600 text-white rounded-lg hover:bg-red-800 text-xl btn ' > Add Cart </button>
+             <button   className=' py-2 px-4 bg-red-600 text-white rounded-lg hover:bg-red-800 text-xl btn ' >Order </button>
              </div>
 
              

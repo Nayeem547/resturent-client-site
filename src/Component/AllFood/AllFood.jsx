@@ -27,7 +27,7 @@ const AllFood = (props) => {
         <div className="flex items-center justify-between">
      <span className="text-3xl font-bold text-gray-900 dark:text-white">${Price}</span>
          <Link to={`/foodDetails/${_id}`} > 
-         <button>Details</button>
+         <button className=' py-2 px-3 bg-red-600 text-white rounded-lg hover:bg-red-900 ' >Details</button>
          </Link>
             
         </div>

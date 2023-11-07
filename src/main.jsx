@@ -8,6 +8,9 @@ import Layout from './Component/Layout/Layout'
 import Home from './Component/Home/Home'
 import FoodPagination from './Component/AllFood/FoodPagination'
 import FoodMap from './Component/AllFood/FoodMap'
+import Login from './Component/Logins/Login'
+import SignUp from './Component/Logins/SignUp'
+import AuthProvider from './Component/Provider/AuthProvider'
 
 
 const router = createBrowserRouter([
@@ -29,7 +32,16 @@ const router = createBrowserRouter([
         path: '/foodDetails/:id',
         element: <FoodMap></FoodMap>,
         loader: ({params}) => fetch(`http://localhost:5000/allfoods/details/${params.id}`)
-      }
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
+
+      },
+      {
+        path: "/signUp",
+        element: <SignUp></SignUp>,
+      },
       
     ]
   }
@@ -40,6 +52,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+  <AuthProvider>
   <RouterProvider router={router} />
+  </AuthProvider>
   </React.StrictMode>,
 )
