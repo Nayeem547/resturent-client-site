@@ -13,6 +13,8 @@ import SignUp from './Component/Logins/SignUp'
 import AuthProvider from './Component/Provider/AuthProvider'
 import FoodFormMap from './Component/AllFood/FoodFormMap'
 import MyOrder from './Component/AllFood/MyOrder'
+import AddFood from './Component/AllFood/AddFood'
+import MyFooter from './Component/Home/MyFooter'
 
 
 const router = createBrowserRouter([
@@ -52,7 +54,16 @@ const router = createBrowserRouter([
       {
         path: "/myorder",
         element: <MyOrder></MyOrder>,
+      },
+      {
+        path: "/addfood",
+        element: <AddFood></AddFood>,
+      },
+      {
+        path: "/footer",
+        element: <MyFooter></MyFooter>,
       }
+      
       
     ]
   }

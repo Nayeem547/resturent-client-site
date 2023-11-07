@@ -76,7 +76,10 @@ const StickyNavbar = () => {
                    
                  
                </li>
+               <Link to="/addfood">
                <li>Add items</li>
+               </Link>
+               
 
                <Link to="/myorder" >
                <li>My Order Food</li>

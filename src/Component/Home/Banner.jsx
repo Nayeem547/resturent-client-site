@@ -1,5 +1,6 @@
 import React from 'react';
 import banner_img from '../../assets/restaurant_banner.jpg'
+import { Link } from 'react-router-dom';
 const Banner = () => {
     return (
         <div className=' relative ' >
@@ -14,7 +15,12 @@ const Banner = () => {
                 Chinese Cuisine.
                 </h2>
                 <p className=' pl-10 lg:pl-56 text-left text-[12px] lg:text-2xl  ' >Foodoko delivers traditional Chinese cuisine, fusing  traditional flavours <br /> with modern cooking methods and exquisite presentation to create a <br />  unique and exciting dining experience.</p>
+                
+                <Link to="/allfood" >
                 <button className=' py-2 px-4 bg-red-600 hover:bg-red-950 rounded-lg ' >Menues</button>
+                </Link>
+
+                
                 </div>
             
         </div>
