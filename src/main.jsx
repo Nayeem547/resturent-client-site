@@ -11,6 +11,8 @@ import FoodMap from './Component/AllFood/FoodMap'
 import Login from './Component/Logins/Login'
 import SignUp from './Component/Logins/SignUp'
 import AuthProvider from './Component/Provider/AuthProvider'
+import FoodFormMap from './Component/AllFood/FoodFormMap'
+import MyOrder from './Component/AllFood/MyOrder'
 
 
 const router = createBrowserRouter([
@@ -34,6 +36,11 @@ const router = createBrowserRouter([
         loader: ({params}) => fetch(`http://localhost:5000/allfoods/details/${params.id}`)
       },
       {
+        path: '/foodformmap/:id',
+        element: <FoodFormMap></FoodFormMap>,
+        loader: ({params}) => fetch(`http://localhost:5000/allfoods/details/${params.id}`)
+      },
+      {
         path: "/login",
         element: <Login></Login>,
 
@@ -42,6 +49,10 @@ const router = createBrowserRouter([
         path: "/signUp",
         element: <SignUp></SignUp>,
       },
+      {
+        path: "/myorder",
+        element: <MyOrder></MyOrder>,
+      }
       
     ]
   }

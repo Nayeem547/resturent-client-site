@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
-import FoodDetails from './FoodDetails';
+import FoodsForm from './FoodsForm';
 
 
-const FoodMap = ({}) => {
-
+const FoodFormMap = () => {
+    
     const [cart, setCart] = useState({});
 
     const { id } = useParams();
@@ -16,25 +16,14 @@ const FoodMap = ({}) => {
         // setCart(findCart);
       }, [id, cartes]);
 
-    return (
-
-
-
-
-        <div>
-            <FoodDetails key={cart.id} cart={cartes} >
+      return(
+        <div className=' h-96 flex flex-col text-center justify-center mt-32 items-center '>
+            
+             <FoodsForm key={cart.id} cart={cartes}>
             {" "}
-            </FoodDetails>
-
-
-
-           
-
-            {/* <CarDetails >
-        {" "}
-      </CarDetails> */}
+            </FoodsForm>
         </div>
     );
 };
 
-export default FoodMap;
+export default FoodFormMap;

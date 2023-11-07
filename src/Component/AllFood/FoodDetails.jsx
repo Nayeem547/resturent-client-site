@@ -1,5 +1,6 @@
 import React from 'react';
 import FoodMap from './FoodMap';
+import { Link } from 'react-router-dom';
 
 const FoodDetails = ({cart}) => {
     const  {
@@ -31,7 +32,9 @@ const FoodDetails = ({cart}) => {
              <p className=' font-semibold  ' > Price: <span className=' text-red-600 '>{Price}</span></p>
 
              <div className=' mt-10 '>
+             <Link to={`/foodformmap/${_id}`} > 
              <button   className=' py-2 px-4 bg-red-600 text-white rounded-lg hover:bg-red-800 text-xl btn ' >Order </button>
+             </Link>
              </div>
 
              
