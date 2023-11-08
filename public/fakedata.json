@@ -283,6 +283,75 @@
       "Food_Origin": "Japan",
       "Description": "Creamy New England-style clam chowder with tender clams and diced potatoes, served with oyster crackers.",
       
-    }
+    },
+   
+
+
+
+
+
+  {
+    "Food Name": "Margherita Pizza",
+    "Food Image": "margherita.jpg",
+    "Food Category": "Italian",
+    "Price": 9.99,
+    "Quantity": 5,
+    "Food Origin": "Italy",
+    "Description": "A classic pizza with tomato, mozzarella cheese, fresh basil, and a drizzle of olive oil."
+  },
+  {
+    "Food Name": "Sashimi Platter",
+    "Food Image": "sashimi.jpg",
+    "Food Category": "Japanese",
+    "Price": 22.50,
+    "Quantity": 2,
+    "Food Origin": "Japan",
+    "Description": "Fresh sashimi slices of tuna, salmon, and yellowtail, served with pickled ginger and wasabi."
+  },
+  {
+    "Food Name": "Taco Al Pastor",
+    "Food Image": "taco-al-pastor.jpg",
+    "Food Category": "Mexican",
+    "Price": 8.99,
+    "Quantity": 4,
+    "Food Origin": "Mexico",
+    "Description": "Tacos with marinated pork, pineapple, and cilantro, served on corn tortillas."
+  },
+  {
+    "Food Name": "Butter Chicken",
+    "Food Image": "https://i.ibb.co/HrY0Grk/butter-chicken.jpg",
+    "Food Category": "Indian",
+    "Price": 16.75,
+    "Quantity": 3,
+    "Food Origin": "India",
+    "Description": "Creamy and rich chicken curry with a tomato-based sauce and a blend of spices."
+  },
+  {
+    "Food Name": "Kung Pao Shrimp",
+    "Food Image": "kung-pao-shrimp.jpg",
+    "Food Category": "Chinese",
+    "Price": 15.99,
+    "Quantity": 1,
+    "Food Origin": "China",
+    "Description": "Stir-fried shrimp with peanuts, vegetables, and a spicy, savory sauce."
+  },
+  {
+    "Food Name": "Greek Moussaka",
+    "Food Image": "moussaka.jpg",
+    "Food Category": "Mediterranean",
+    "Price": 14.50,
+    "Quantity": 2,
+    "Food Origin": "Greece",
+    "Description": "Layers of eggplant, ground meat, and creamy béchamel sauce, baked to perfection."
+  }
+
+
+
+
+
+
+
+
+
   ]
   

@@ -1,14 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
-
-
-
+import { useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
-const AddFood = () => {
+const UpdateCart = ({}) => {
 
-    //User info
+    const cartes = useLoaderData();
+  const { _id, Food_Name, Food_Image, Food_Category,Food_Origin, Quantity, Price, Description } = cartes;
 
+    
     const {user} = useContext(AuthContext);
     
     const [userdata, setUserdata] = useState();
@@ -44,7 +44,7 @@ const AddFood = () => {
         if(user){
         
         const form = event.target;
-        const email = user.email;
+        
         
         const Food_Name = form.name.value;
         const Food_Image= form.FoodImage.value;
@@ -53,16 +53,8 @@ const AddFood = () => {
         const Quantity = form.Quantity.value;
         const Price = form.Price.value;
         const Description = form.Description.value;
-        
-        
-    
-        fetch("http://localhost:5000/allfoods", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify({
-            email,
+
+        const UpdateCard = {
             Food_Name,
             Food_Image,
             Food_Category,
@@ -70,27 +62,39 @@ const AddFood = () => {
             Quantity,
             Price,
             Description
-          }),
+        }
+        
+        
+    
+        fetch(`http://localhost:5000/allfoods/${_id}`, {
+          method: "PUT",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(UpdateCard),
         }).then(res => res.json())
         .then((data) => { 
-          if (data.insertedId) {
+          if (data.modifiedCount > 0) {
             Swal.fire("Done!", "Your item has been Added.", "success");
-          }
+          };
       });
     };
       
     };
 
     return (
-        <div  className=' flex justify-center text-center  '>
-             <div className=' w-96 mt-16 '>
+        <div>
+             <div  className=' flex justify-center text-center  '>
+             <div className=' w-96 mt-16   '>
       <h2 className=" text-3xl font-extrabold ">Add a Food</h2>
 
       <form onSubmit={handleAddCart}>
 
 
-        
-      <div className=' flex flex-col lg:flex-row  justify-center gap-10  '>
+        {/* my div */}
+
+       <div className=' flex flex-col lg:flex-row  justify-center gap-10  '>
+
        
 
         
@@ -105,6 +109,7 @@ const AddFood = () => {
               <input
                 type="text"
                 name="name "
+                defaultValue={Food_Name}
                 placeholder="Food Name"
                 className=" input input-bordered w-full "
               />
@@ -118,6 +123,7 @@ const AddFood = () => {
               <input
                 type="text"
                 name="FoodImage"
+                defaultValue={Food_Image}
                 placeholder="Photo url"
                 className=" input input-bordered w-full "
               />
@@ -132,6 +138,7 @@ const AddFood = () => {
               <input
                 type="text"
                 name="FoodCategory"
+                defaultValue={Food_Category}
                 placeholder="Food Category"
                 className=" input input-bordered w-full "
               />
@@ -163,6 +170,7 @@ const AddFood = () => {
               <input
                 type="text"
                 name="Price"
+                defaultValue={Price}
                 placeholder="Price"
                 className=" input input-bordered w-full "
               />
@@ -176,6 +184,7 @@ const AddFood = () => {
               <input
                 type="text"
                 name="Description"
+                defaultValue={Description}
                 placeholder="description"
                 className=" input input-bordered w-full "
               />
@@ -194,6 +203,7 @@ const AddFood = () => {
               <input
                 type="text"
                 name="FoodOrigin"
+                defaultValue={Food_Origin}
                 placeholder="Food Origin"
                 className=" input input-bordered w-full "
               />
@@ -207,6 +217,7 @@ const AddFood = () => {
               <input
                 type="text"
                 name="Quantity"
+                defaultValue={Quantity}
                 placeholder="Quantity"
                 className=" input input-bordered w-full "
               />
@@ -250,7 +261,8 @@ const AddFood = () => {
         </div>
 
 
-        </div>
+        </div> 
+        {/* my div */}
 
        
 
@@ -262,7 +274,8 @@ const AddFood = () => {
       </form>
     </div>
         </div>
+        </div>
     );
 };
 
-export default AddFood;
+export default UpdateCart;

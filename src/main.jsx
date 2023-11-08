@@ -15,6 +15,10 @@ import FoodFormMap from './Component/AllFood/FoodFormMap'
 import MyOrder from './Component/AllFood/MyOrder'
 import AddFood from './Component/AllFood/AddFood'
 import MyFooter from './Component/Home/MyFooter'
+import MyAddFoods from './Component/AllFood/MyAddFoods'
+import UpdateCart from './Component/AllFood/UpdateCart'
+import Blog from './Component/Home/Blog'
+import PrivateRoute from './Component/Logins/PrivateRoute'
 
 
 const router = createBrowserRouter([
@@ -34,7 +38,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/foodDetails/:id',
-        element: <FoodMap></FoodMap>,
+        element: <PrivateRoute> <FoodMap></FoodMap> </PrivateRoute>,
         loader: ({params}) => fetch(`http://localhost:5000/allfoods/details/${params.id}`)
       },
       {
@@ -62,6 +66,19 @@ const router = createBrowserRouter([
       {
         path: "/footer",
         element: <MyFooter></MyFooter>,
+      },
+      {
+        path: "/myAddFoods",
+        element: <MyAddFoods></MyAddFoods>,
+      },
+      {
+        path: "/Updatecart/:id",
+        element: <UpdateCart></UpdateCart>,
+        loader: ({params}) => fetch(`http://localhost:5000/allfoods/details/${params.id}`)
+      },
+      {
+        path: '/blog',
+        element: <Blog></Blog>
       }
       
       

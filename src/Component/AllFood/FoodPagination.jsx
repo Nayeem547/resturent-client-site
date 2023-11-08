@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import AllFood from './AllFood';
 import { useLoaderData } from 'react-router-dom';
+import MyFooter from '../Home/MyFooter';
 
 const FoodPagination = () => {
     const [allfoods, setProducts] = useState([]);
@@ -58,8 +59,11 @@ const FoodPagination = () => {
 
 
     return (
-        <div className=' flex flex-col-reverse items-center text-center justify-center mt-16 ' >
-             <div className="   products-container grid md:grid-cols-2  grid-cols-1   lg:grid-cols-3  gap-10 ">
+        <div>
+
+        
+        <div className=' flex mx-auto mb-16   flex-col-reverse items-center text-center justify-center mt-16 ' >
+             <div className=" justify-center items-center mx-auto text-center  products-container grid md:grid-cols-2  grid-cols-1   lg:grid-cols-3  gap-10 ">
                 {
                     allfoods.map(product => <AllFood  key={product._id}
                         product={product}
@@ -71,7 +75,7 @@ const FoodPagination = () => {
                 <p>Current Page : {currentPage}</p>
                
                 
-              <div className=' flex justify-center  gap-7 ' >
+              <div className=' flex justify-center flex-wrap  gap-7 ' >
 
               <button className=' bg-gray-900  rounded-lg text-white py-2 px-3 text-xl ' onClick={handlePrevousPage} >prev</button>
                 {
@@ -95,6 +99,13 @@ const FoodPagination = () => {
                     <option value="50">50</option> */}
                 </select>
             </div>
+        </div>
+
+        <footer>
+            <MyFooter></MyFooter>
+        </footer>
+
+
         </div>
     );
 };
