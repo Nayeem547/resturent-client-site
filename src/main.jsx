@@ -36,18 +36,18 @@ const router = createBrowserRouter([
       {
         path: '/allfood',
         element: <FoodPagination></FoodPagination>,
-        loader: () => fetch('http://localhost:5000/productsCount'),
+        loader: () => fetch('https://resturent-manage-server.vercel.app/productsCount'),
 
       },
       {
         path: '/foodDetails/:id',
         element: <PrivateRoute> <FoodMap></FoodMap> </PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/allfoods/details/${params.id}`)
+        loader: ({params}) => fetch(`https://resturent-manage-server.vercel.app/allfoods/details/${params.id}`)
       },
       {
         path: '/foodformmap/:id',
         element: <FoodFormMap></FoodFormMap>,
-        loader: ({params}) => fetch(`http://localhost:5000/allfoods/details/${params.id}`)
+        loader: ({params}) => fetch(`https://resturent-manage-server.vercel.app/allfoods/details/${params.id}`)
       },
       {
         path: "/login",
@@ -77,7 +77,7 @@ const router = createBrowserRouter([
       {
         path: "/Updatecart/:id",
         element: <UpdateCart></UpdateCart>,
-        loader: ({params}) => fetch(`http://localhost:5000/allfoods/details/${params.id}`)
+        loader: ({params}) => fetch(`https://resturent-manage-server.vercel.app/allfoods/details/${params.id}`)
       },
       {
         path: '/blog',
@@ -86,7 +86,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Search></Search>,
-        loader: ({params}) => fetch(`http://localhost:5000/allfoods/${params.id}`),
+        loader: ({params}) => fetch(`https://resturent-manage-server.vercel.app/allfoods/${params.id}`),
       }
       
       

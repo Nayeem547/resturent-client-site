@@ -33,7 +33,7 @@ const Search = () => {
     //     );
     //     setCategory(filterData);
   
-    //   fetch(`http://localhost:5000/allfoods?category=${categoryName}`)
+    //   fetch(`https://resturent-manage-server.vercel.app/allfoods?category=${categoryName}`)
     //     .then((response) => response.json())
     //     .then((data) => {
     //       setCategory(data);

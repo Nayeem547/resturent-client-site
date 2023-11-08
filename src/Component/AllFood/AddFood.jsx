@@ -15,7 +15,7 @@ const AddFood = () => {
     
 
    const  handleinfo = () => {
-    fetch(`http://localhost:5000/user/${user?.email}`) // Replace with your actual API endpoint
+    fetch(`https://resturent-manage-server.vercel.app/user/${user?.email}`) // Replace with your actual API endpoint
         .then((res) => res.json())
         .then((data) => {
            // Assuming the API response contains { name, img }
@@ -56,7 +56,7 @@ const AddFood = () => {
         
         
     
-        fetch("http://localhost:5000/allfoods", {
+        fetch("https://resturent-manage-server.vercel.app/allfoods", {
           method: "POST",
           headers: {
             "content-type": "application/json",

@@ -10,7 +10,7 @@ const MyAddFoods = () => {
   
     useEffect(() => {
       // Fetch cart items from the server when the component mounts
-      fetch(`http://localhost:5000/allfoods/${user?.email}`)
+      fetch(`https://resturent-manage-server.vercel.app/allfoods/${user?.email}`)
         .then((res) => res.json())
         .then((data) => setCartItems(data));
     }, []);

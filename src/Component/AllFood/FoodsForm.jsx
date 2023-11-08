@@ -41,7 +41,7 @@ const FoodsForm = ({cart}) => {
         };
       
         // Send a POST request to your server to add the item to the cart
-        fetch('http://localhost:5000/userStore', {
+        fetch('https://resturent-manage-server.vercel.app/userStore', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -88,7 +88,7 @@ const FoodsForm = ({cart}) => {
       
   
      const  handleinfo = () => {
-      fetch(`http://localhost:5000/user/${user?.email}`) // Replace with your actual API endpoint
+      fetch(`https://resturent-manage-server.vercel.app/user/${user?.email}`) // Replace with your actual API endpoint
           .then((res) => res.json())
           .then((data) => {
              // Assuming the API response contains { name, img }

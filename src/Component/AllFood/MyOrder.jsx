@@ -9,7 +9,7 @@ const MyOrder = () => {
 
   useEffect(() => {
     // Fetch cart items from the server when the component mounts
-    fetch(`http://localhost:5000/userStore/${user.email}`)
+    fetch(`https://resturent-manage-server.vercel.app/userStore/${user.email}`)
       .then((res) => res.json())
       .then((data) => setCartItems(data));
   }, []);
@@ -28,7 +28,7 @@ const MyOrder = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         // Send a DELETE request to remove the item from the cart
-        fetch(`http://localhost:5000/userStore/${_id}`, {
+        fetch(`https://resturent-manage-server.vercel.app/userStore/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

@@ -48,14 +48,14 @@ useEffect(()=>{
 
         if(currentUser){
             
-            axios.post('http://localhost:5000/jwt', loggeduser, {
+            axios.post('https://resturent-manage-server.vercel.app/jwt', loggeduser, {
             withCredentials: true     })
             .then(res => {
                 console.log('token response', res.data);
             })
         }
         else{
-            axios.post('http://localhost:5000/logout', loggeduser, {
+            axios.post('https://resturent-manage-server.vercel.app/logout', loggeduser, {
                 withCredentials: true
             })
             .then(res => {

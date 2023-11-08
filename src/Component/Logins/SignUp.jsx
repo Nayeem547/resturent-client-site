@@ -60,7 +60,7 @@ const SignUp = () => {
             console.log(result.user);
             const user = {email, name, img};
             
-            fetch(`http://localhost:5000/user`, {
+            fetch(`https://resturent-manage-server.vercel.app/user`, {
                 method: "POST",
                 headers: {
                   "content-type": "application/json",

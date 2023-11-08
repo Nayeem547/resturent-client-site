@@ -39,7 +39,7 @@ const FoodPagination = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/allfoods?page=${currentPage}&size=${itemsPerPage}`)
+        fetch(`https://resturent-manage-server.vercel.app/allfoods?page=${currentPage}&size=${itemsPerPage}`)
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [itemsPerPage, currentPage]);
