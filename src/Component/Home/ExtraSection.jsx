@@ -3,12 +3,12 @@ import plat from "../../assets/home-03-353x395.png";
 import fools from "../../assets/icon-02-96x96.png";
 const ExtraSection = () => {
   return (
-    <div className=" mt-10 mb-10  ">
+    <div className=" mt-10 w-40 lg:w-full mb-10  ">
       <div className=" text-center mx-auto flex justify-center ">
         <img src={fools} alt="" />
       </div>
       <div className=" grid grid-cols-1 md:grid-cols-1  lg:grid-cols-3 text-center justify-center items-center ">
-        <div className=" text-xl space-y-6 ">
+        <div className=" text-md lg:text-xl space-y-6 ">
           <h2 className=" text-xl lg:text-4xl font-semibold font-serif text-red-600 ">
             Opening Hours
           </h2>
@@ -24,11 +24,11 @@ const ExtraSection = () => {
           <p>Restaurant is closed on holidays.</p>
         </div>
 
-        <div>
-          <img src={plat} alt="" />
+        <div className=" w-32 lg:w-full ">
+          <img className="" src={plat} alt="" />
         </div>
 
-        <div className=" text-xl space-y-6 ">
+        <div className=" text-md lg:text-xl space-y-6 ">
           <h2 className=" text-xl lg:text-4xl font-semibold font-serif text-red-600 ">Contact info</h2>
 
           <div>

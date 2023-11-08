@@ -17,12 +17,12 @@ const StickyNavbar = () => {
   };
 
   return (
-    <div className="navbar bg-black">
-  <div className="navbar-start">
+    <div className="navbar flex flex-col gap-10 lg:flex-row bg-black">
+  <div className=" navbar-center lg:navbar-start">
     
     <img className=' h-16 ' src={logo} alt="" />
   </div>
-  <div className="navbar-center  lg:flex">
+  <div className="navbar-center   lg:flex">
     <ul className=" text-white flex justify-center gap-6  px-1">
       <li className=' hover:text-red-600 ' >
        <NavLink
@@ -56,7 +56,7 @@ const StickyNavbar = () => {
       </li>
     </ul>
   </div>
-  <div className="navbar-end ">
+  <div className=" navbar-end">
 
     <div className=' flex gap-4 '>
 

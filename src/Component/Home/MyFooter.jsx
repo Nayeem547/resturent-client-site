@@ -4,7 +4,7 @@ import React from 'react';
 import logo from '../../assets/logo-inverse-301x105.png'
 const MyFooter = () => {
   return (
-    <div>
+    <div className='  '>
       <div>
             <footer className="footer p-10 bg-black text-neutral-content">
   <nav>
@@ -16,7 +16,7 @@ const MyFooter = () => {
   </nav> 
   <nav>
     {/* <header >{logo}</header>  */}
-    <img className=" h-16 text-white" src={logo} alt="" />
+    <img className=" h-16 w-20 text-white" src={logo} alt="" />
     <a className="link link-hover">About us</a>
     <a className="link link-hover">Contact</a>
     <a className="link link-hover">Jobs</a>
