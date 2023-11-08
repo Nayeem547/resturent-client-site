@@ -19,12 +19,15 @@ import MyAddFoods from './Component/AllFood/MyAddFoods'
 import UpdateCart from './Component/AllFood/UpdateCart'
 import Blog from './Component/Home/Blog'
 import PrivateRoute from './Component/Logins/PrivateRoute'
+import Search from './Component/AllFood/Search'
+import ErrorPage from './Component/Home/ErrorPage'
 
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Layout></Layout>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: '/',
@@ -79,6 +82,11 @@ const router = createBrowserRouter([
       {
         path: '/blog',
         element: <Blog></Blog>
+      },
+      {
+        path: "/",
+        element: <Search></Search>,
+        loader: ({params}) => fetch(`http://localhost:5000/allfoods/${params.id}`),
       }
       
       

@@ -2,6 +2,7 @@ import React, { createContext, useEffect, useState } from 'react';
 import app from '../../Firebase/firebase.config';
 
 import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import axios from 'axios';
 export const auth = getAuth(app);
 
 export const AuthContext = createContext(null);
@@ -40,14 +41,33 @@ const logOut = () => {
 
 useEffect(()=>{
     const unSbscribe = onAuthStateChanged(auth, currentUser =>{
+        const userEmail = currentUser?.email || user?.email;
+        const loggeduser = { email: userEmail};
         setUser(currentUser);
         setLoading(false);
+
+        if(currentUser){
+            
+            axios.post('http://localhost:5000/jwt', loggeduser, {
+            withCredentials: true     })
+            .then(res => {
+                console.log('token response', res.data);
+            })
+        }
+        else{
+            axios.post('http://localhost:5000/logout', loggeduser, {
+                withCredentials: true
+            })
+            .then(res => {
+                console.log(res.data);
+            })
+        }
     });
     return()=>{
         unSbscribe();
     }
 
-  }, [])      
+  }, [])        
 
     const authInfo = {
         user,

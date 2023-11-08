@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import AllFood from './AllFood';
 import { useLoaderData } from 'react-router-dom';
 import MyFooter from '../Home/MyFooter';
+import Search from './Search';
+
 
 const FoodPagination = () => {
     const [allfoods, setProducts] = useState([]);
@@ -22,7 +24,18 @@ const FoodPagination = () => {
     const pages = [...Array(numberofPages).keys()];
     console.log(pages);
 
+      //implement search function
+      
 
+
+
+
+
+      //serch function end
+
+     
+        
+      
 
 
     useEffect(() => {
@@ -60,6 +73,10 @@ const FoodPagination = () => {
 
     return (
         <div>
+
+            <div>
+                <Search></Search>
+            </div>
 
         
         <div className=' flex mx-auto mb-16   flex-col-reverse items-center text-center justify-center mt-16 ' >
