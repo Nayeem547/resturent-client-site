@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import AllFood from './AllFood';
 import { useLoaderData } from 'react-router-dom';
 import MyFooter from '../Home/MyFooter';
-import Search from './Search';
+
 
 
 const FoodPagination = () => {
@@ -70,19 +70,41 @@ const FoodPagination = () => {
 
     }
 
+    const [search, setSearch] = useState('');
+    console.log(search);
+
 
     return (
         <div>
 
-            <div>
-                <Search></Search>
+            <div className=' flex justify-center mt-10 '>
+            <div className='  items-center flex '>
+
+<form  className=' flex gap-3  justify-center '>
+<input onChange={(e) => setSearch(e.target.value)}
+className="pl-1 pr-1 md:pl-2 lg:pl-2 md:pr-11 lg:pr-1 border rounded-lg border-[#DEDEDE] py-1 md:py-2 lg:py-0"
+placeholder="Search by Food Name..."
+type="text"
+name="foodName"
+></input>
+
+<input 
+type="submit"
+value="Search"
+className="btn btn-block  w-20 bg-slate-800 text-white"
+/>
+</form>
+
+
+</div>
             </div>
 
         
         <div className=' flex mx-auto mb-16   flex-col-reverse items-center text-center justify-center mt-16 ' >
              <div className=" justify-center items-center mx-auto text-center  products-container grid md:grid-cols-2  grid-cols-1   lg:grid-cols-3  gap-10 ">
                 {
-                    allfoods.map(product => <AllFood  key={product._id}
+                    allfoods.filter((product) =>{
+                        return search.toLowerCase() === '' ? product : product.Food_Name.toLowerCase().includes(search);}).map(product => <AllFood  key={product._id}
                         product={product}
                        > </AllFood> )
                 }

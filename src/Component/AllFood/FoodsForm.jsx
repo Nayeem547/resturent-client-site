@@ -3,10 +3,13 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from "../Provider/AuthProvider";
-import swal from "sweetalert";
+
 import Swal from "sweetalert2";
 
+
 const FoodsForm = ({cart}) => {
+
+  const {user} = useContext(AuthContext);
 
    const {
     _id,
@@ -14,19 +17,146 @@ const FoodsForm = ({cart}) => {
         users_name,
         Food_Image,
         Price, 
-        
+        Quantity,
+        Count,
       } = cart || {}
 
+     const [card, setCart] = useState();
+       
 
+      // const [selectedQuantity, setSelectedQuantity] = useState(1);
 
+  
 
-
-
-      //Handle Purachse
+      // // Handle Purchase
+     
+      //   // Check if the selected quantity is valid
+      //   if (selectedQuantity <= 0) {
+      //     Swal.fire({
+      //       title: 'Invalid Quantity',
+      //       text: 'Please select a valid quantity.',
+      //       icon: 'error',
+      //       confirmButtonText: 'OK',
+      //     });
+      //     return; // Exit the function
+      //   }
       
-      const [selectedQuantity, setSelectedQuantity] = useState(1);
+      //   // Check if the selected quantity exceeds the available quantity
+      //   if (selectedQuantity > cart.Quantity) {
+      //     Swal.fire({
+      //       title: 'Quantity Exceeded',
+      //       text: 'The selected quantity exceeds the available quantity.',
+      //       icon: 'error',
+      //       confirmButtonText: 'OK',
+      //     });
+      //     return; // Exit the function
+      //   }
+      
+      //   // Check if the user is trying to purchase their own added item
+      //   if (user.email === cart.email) {
+      //     Swal.fire({
+      //       title: 'Invalid Operation',
+      //       text: 'You cannot purchase your own added food item.',
+      //       icon: 'error',
+      //       confirmButtonText: 'OK',
+      //     });
+      //     return; // Exit the function
+      //   }
+      
+      //   // Proceed with the purchase logic
+      //   // ...
+      
+      
+      const [selectedQuantity, setSelectedQuantity] = useState();
 
-      const handleOrderFood = () => {
+
+      
+      const handleOrderFood = (event) => {
+        event.preventDefault();
+       
+
+          // Check if the selected quantity is valid
+          if (selectedQuantity <= 0) {
+            Swal.fire({
+              title: 'Invalid Quantity',
+              text: 'Please select a valid quantity.',
+              icon: 'error',
+              confirmButtonText: 'OK',
+            });
+            return; // Exit the function
+          }
+        
+          // Check if the selected quantity exceeds the available quantity
+          if (selectedQuantity > cart.Quantity) {
+            Swal.fire({
+              title: 'Quantity Exceeded',
+              text: 'The selected quantity exceeds the available quantity.',
+              icon: 'error',
+              confirmButtonText: 'OK',
+            });
+            return; // Exit the function
+          }
+        
+          // Check if the user is trying to purchase their own added item
+          if (user.email === cart.email) {
+            Swal.fire({
+              title: 'Invalid Operation',
+              text: 'You cannot purchase your own added food item.',
+              icon: 'error',
+              confirmButtonText: 'OK',
+            });
+            return; // Exit the function
+          }
+        
+          // Proceed with the purchase logic
+          // ...
+          setCart({ ...cart, Quantity: cart.Quantity - 1, Count: cart.Count + 1 });
+
+        
+
+          fetch(`https://resturent-manage-server.vercel.app/allfoods/${_id}`, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({Quantity: cart.Quantity - selectedQuantity, Count: cart.Count + 1 }),
+          })
+            .then(response => response.json())
+            .then(data => {
+              if (data.modifiedCount > 0) {
+                Swal.fire('Done!', 'Your item has been Added.', 'success');
+              }
+            })
+            .catch(error => console.error('Error updating food order:', error));
+
+
+
+      //   const UpdateCard = {
+      //     Quantity,
+      //   }
+      //   fetch(`https://resturent-manage-server.vercel.app/allfoods/${_id}`, {
+      //     method: "PUT",
+      //     headers: {
+      //       "content-type": "application/json",
+      //     },
+      //     body: JSON.stringify(UpdateCard),
+      //   }).then(res => res.json())
+      //   .then((data) => { 
+      //     if (data.modifiedCount > 0) {
+      //       Swal.fire("Done!", "Your item has been Added.", "success");
+      //     };
+      // });
+    
+      
+    
+
+        
+
+        // Handle Purchase
+       
+        
+
+
         // Create an object representing the item to be added to the cart
         const itemToAdd = {
             email: user.email,
@@ -64,6 +194,7 @@ const FoodsForm = ({cart}) => {
             // Handle any errors that occur during the request
             console.error('Error adding item to the cart:', error);
           });
+          
       };
 
 
@@ -82,7 +213,7 @@ const FoodsForm = ({cart}) => {
 
       //User info
 
-      const {user} = useContext(AuthContext);
+      
     
       const [userdata, setUserdata] = useState();
       
@@ -112,7 +243,13 @@ const FoodsForm = ({cart}) => {
 
 
     return (
+
+      
+
+      
         <div className=" flex flex-col md:text-2xl text-xl lg:text-3xl pb-20 rounded-lg shadow-lg border  px-32 justify-center items-center text-center  ">
+          <form onSubmit={handleOrderFood} action="
+          ">
             <div className=" py-16 ">   <h2 className=" font-bold "> Order Here  </h2> </div>
           
             <div className="  grid gap-24 grid-cols-1 lg:grid-cols-2 ">
@@ -132,16 +269,16 @@ const FoodsForm = ({cart}) => {
             <div className=" space-y-10 " >
             <div className=" font-semibold space-y-2 ">
                 <h2>Quantity</h2>
-                <select
-  className="select select-info w-full max-w-xs"
-  value={selectedQuantity}
-  onChange={(e) => setSelectedQuantity(parseInt(e.target.value))}
->
-  <option value={1}>1</option>
-  <option value={2}>2</option>
-  <option value={3}>3</option>
-  {/* Add more options as needed */}
-</select>
+             
+
+        <p name="Quantity" value={selectedQuantity}
+  onChange={(e) => setSelectedQuantity(parseInt(e.target.value))}>
+           {Quantity}
+        </p>
+
+        <div>
+          <p name="Count" >Count: {Count}</p>
+        </div>
             </div>            
 
             <div className="App">
@@ -157,9 +294,18 @@ const FoodsForm = ({cart}) => {
             
             </div>
             <div className=" mt-8 text-center ">
-                <button onClick={handleOrderFood} className=" text-xl py-3 px-4 bg-red-600 text-white rounded-lg ">Purchase</button>
+            <input
+          type="submit"
+          value="Purchase"
+          className=" btn btn-block mt-8 bg-slate-800 text-white "
+        />
+                
             </div>
+
+            </form>
         </div>
+
+        
     );
 };
 

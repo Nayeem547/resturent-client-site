@@ -38,36 +38,16 @@ const logOut = () => {
     setLoading(true);
     return signOut(auth);
 }
-
 useEffect(()=>{
     const unSbscribe = onAuthStateChanged(auth, currentUser =>{
-        const userEmail = currentUser?.email || user?.email;
-        const loggeduser = { email: userEmail};
         setUser(currentUser);
         setLoading(false);
-
-        if(currentUser){
-            
-            axios.post('https://resturent-manage-server.vercel.app/jwt', loggeduser, {
-            withCredentials: true     })
-            .then(res => {
-                console.log('token response', res.data);
-            })
-        }
-        else{
-            axios.post('https://resturent-manage-server.vercel.app/logout', loggeduser, {
-                withCredentials: true
-            })
-            .then(res => {
-                console.log(res.data);
-            })
-        }
     });
     return()=>{
         unSbscribe();
     }
 
-  }, [])        
+  }, [])       
 
     const authInfo = {
         user,

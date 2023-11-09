@@ -19,7 +19,7 @@ import MyAddFoods from './Component/AllFood/MyAddFoods'
 import UpdateCart from './Component/AllFood/UpdateCart'
 import Blog from './Component/Home/Blog'
 import PrivateRoute from './Component/Logins/PrivateRoute'
-import Search from './Component/AllFood/Search'
+
 import ErrorPage from './Component/Home/ErrorPage'
 
 
@@ -83,11 +83,11 @@ const router = createBrowserRouter([
         path: '/blog',
         element: <Blog></Blog>
       },
-      {
-        path: "/",
-        element: <Search></Search>,
-        loader: ({params}) => fetch(`https://resturent-manage-server.vercel.app/allfoods/${params.id}`),
-      }
+      // {
+      //   path: "/",
+      //   element: <Search></Search>,
+      //   loader: ({params}) => fetch(`https://resturent-manage-server.vercel.app/allfoods/${params.Food_Name}`),
+      // }
       
       
     ]
